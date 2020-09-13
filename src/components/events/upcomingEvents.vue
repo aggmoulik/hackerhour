@@ -61,7 +61,8 @@
                     <v-card-title class="mb-0">
                         <div>
                             <p class="google-font mb-2" style="font-size:140%;color:#0277bd">{{ item.name }}</p>
-                            <p class="google-font mt-2 mb-1"><span v-html="$options.filters.summery(item.description,180)" style="font-size:110%"></span></p>
+                            <!-- <p class="google-font mt-2 mb-1"><span v-html="$options.filters.summery(item.description,180)" style="font-size:110%"></span></p> -->
+                            <p class="google-font mt-2 mb-1"><span  style="font-size:110%">{{item.description}}</span></p>
                             <p class="google-font mt-1 mb-0" style="font-size:110%">
                                 <v-icon>insert_invitation</v-icon>
                                 {{item.local_date}}
@@ -72,7 +73,7 @@
                             </p>
                             <p class="google-font mt-1 mb-0" style="font-size:110%">
                                 <v-icon>map</v-icon>
-                                {{item.venue.name | summery(30)}}
+                                <!-- {{item.venue.name | summery(30)}} -->
                             </p>
                         </div>
                     </v-card-title>
@@ -169,38 +170,39 @@
 
 <script>
 import ChapterDetails from '@/assets/data/chapterDetails.json'
-import { MeetupAPI } from '@/config/key'
+import Events from '@/assets/data/events.json'
+// import { MeetupAPI } from '@/config/key'
 
 export default {
     data() {
         return {
             chapterDetails: ChapterDetails,
-            eventsData:[],
-            showLoader: true,
-            showData:false,
+            eventsData:Events,
+            showLoader: false,
+            showData:true,
             notFoundUpcomingEventFlag:false,
             errorMsg:'',
             errorAlert:false
         }
     },
-    created(){
-        fetch('https://cors-anywhere.herokuapp.com/https://api.meetup.com/'+MeetupAPI.urlname+'/events?key='+MeetupAPI.apiKey).then(data=>data.json()).then(res=>{
-            if(res.length>0){
-                this.showLoader = false
-                this.showData = true
-                this.eventsData = res
-            }else{
-                this.showLoader = false
-                this.notFoundUpcomingEventFlag = true
-            }
+    // created(){
+    //     fetch('https://cors-anywhere.herokuapp.com/https://api.meetup.com/'+MeetupAPI.urlname+'/events?key='+MeetupAPI.apiKey).then(data=>data.json()).then(res=>{
+    //         if(res.length>0){
+    //             this.showLoader = false
+    //             this.showData = true
+    //             this.eventsData = res
+    //         }else{
+    //             this.showLoader = false
+    //             this.notFoundUpcomingEventFlag = true
+    //         }
             
-        }).catch(e=>{
-            this.showLoader = false
-            this.errorMsg = 'Issue found with '+e
-            this.errorAlert = true
-            this.notFoundUpcomingEventFlag = true
-        })
-    },
+    //     }).catch(e=>{
+    //         this.showLoader = false
+    //         this.errorMsg = 'Issue found with '+e
+    //         this.errorAlert = true
+    //         this.notFoundUpcomingEventFlag = true
+    //     })
+    // },
     methods:{
         getCharString(data){
             var splitArr = data.split(" ")

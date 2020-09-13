@@ -66,13 +66,13 @@
                         >
                             <v-list-tile-avatar>
                                 <v-avatar color="grey lighten-2" >
-                                    <span class="google-font" style="width:100vh">{{getCharString(item.name)}}</span>
+                                    <span class="google-font" style="width:100vh">{{item.name}}</span>
                                 </v-avatar>
                             </v-list-tile-avatar>
 
                             <v-list-tile-content>
                                 <v-list-tile-title class="google-font" style="color:#424242">{{ item.name }}</v-list-tile-title>
-                                <v-list-tile-sub-title class="google-font">{{ item.local_date | dateFilter}} | {{ item.local_time }}</v-list-tile-sub-title>
+                                <!-- <v-list-tile-sub-title class="google-font">{{ item.local_date | dateFilter}} | {{ item.local_time }}</v-list-tile-sub-title> -->
                             </v-list-tile-content>
 
                             <v-list-tile-action>
@@ -104,37 +104,38 @@
 
 <script>
 import ChapterDetails from '@/assets/data/chapterDetails.json'
-import { MeetupAPI } from '@/config/key'
+import Events from '@/assets/data/events.json'
+// import { MeetupAPI } from '@/config/key'
 export default {
     data() {
         return {
             chapterDetails: ChapterDetails,
-            eventsData:[],
-            showLoader: true,
-            showData:false,
+            eventsData:Events,
+            showLoader: false,
+            showData:true,
             errorMsg:'',
             errorAlert:false,
             notFoundPastEventFlag:false
         }
     },
-    created(){
-        fetch('https://cors-anywhere.herokuapp.com/https://api.meetup.com/'+MeetupAPI.urlname+'/events?desc=true&photo-host=public&page=8&status=past&key='+MeetupAPI.apiKey).then(data=>data.json()).then(res=>{
-            if(res.length>0){
-                this.showLoader = false
-                this.showData = true
-                this.eventsData = res
-            }else{
-                this.notFoundPastEventFlag = true
-                this.showLoader = false
-            }
+    // created(){
+    //     fetch('https://cors-anywhere.herokuapp.com/https://api.meetup.com/'+MeetupAPI.urlname+'/events?desc=true&photo-host=public&page=8&status=past&key='+MeetupAPI.apiKey).then(data=>data.json()).then(res=>{
+    //         if(res.length>0){
+    //             this.showLoader = false
+    //             this.showData = true
+    //             this.eventsData = res
+    //         }else{
+    //             this.notFoundPastEventFlag = true
+    //             this.showLoader = false
+    //         }
             
-        }).catch(e=>{
-            this.showLoader = false
-            this.errorMsg = 'Issue found with '+e
-            this.errorAlert = true
-            this.notFoundPastEventFlag = true
-        })
-    },
+    //     }).catch(e=>{
+    //         this.showLoader = false
+    //         this.errorMsg = 'Issue found with '+e
+    //         this.errorAlert = true
+    //         this.notFoundPastEventFlag = true
+    //     })
+    // },
     methods:{
         getCharString(data){
             var splitArr = data.split(" ")

@@ -45,6 +45,21 @@ export default new Router({
       path: '/contact',
       name: 'contact',
       component: () => import('./views/Contact.vue')
+    },
+    {
+      path: '/schedule',
+      name: 'schedule',
+      component: () => import('./views/Schedule.vue')
+    },
+    {
+      path: '/speakers',
+      name: 'speakers',
+      component: () => import('./views/Speakers.vue')
+    },
+    {
+      path: '/contributors',
+      name: 'contributors',
+      component: () => import('./views/Contributors.vue')
     }
   ]
 })
