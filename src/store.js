@@ -15,6 +15,7 @@ export default new Vuex.Store({
       { text: 'About', to: '/about', icon: 'toc'},
       { text: 'Contact', to: '/contact', icon:'person'},
       { text: 'Contributors', to: '/contributors', icon:'group'},
+      { text: 'Blogs', to: '/blogs', icon:'group'},
 
     ]
   },

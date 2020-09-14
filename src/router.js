@@ -60,6 +60,11 @@ export default new Router({
       path: '/contributors',
       name: 'contributors',
       component: () => import('./views/Contributors.vue')
+    },
+    {
+      path: '/blogs',
+      name: 'blogs',
+      component: () => import('./views/Blogs.vue')
     }
   ]
 })

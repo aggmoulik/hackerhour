@@ -1,11 +1,11 @@
 <template>
   <v-content class="pa-0">
-
     <v-container fluid class="mt-2 mb-0">
       <v-layout wrap align-center justify-center row fill-height class="my-0">
         <v-flex xs12 md10 class="mb-0">
-            <p class="google-font mb-0 mt-0" style="font-size:200%;color:#616161">About {{ChapterDetails.ChapterName}}</p>
-            
+          <p class="google-font mb-0 mt-0" style="font-size:200%;color:#616161">
+            About ComExpo Cyber Security Foundation
+          </p>
         </v-flex>
       </v-layout>
     </v-container>
@@ -13,7 +13,25 @@
     <v-container fluid class="">
       <v-layout wrap align-center justify-center row fill-height>
         <v-flex xs12 md10 class="">
-          <aboutGDGChapter/>
+          <aboutGDGChapter />
+        </v-flex>
+      </v-layout>
+    </v-container>
+
+     <v-container fluid class="mt-2 mb-0">
+      <v-layout wrap align-center justify-center row fill-height class="my-0">
+        <v-flex xs12 md10 class="mb-0">
+          <p class="google-font mb-0 mt-0" style="font-size:200%;color:#616161">
+            About Hacker's Meetup
+          </p>
+        </v-flex>
+      </v-layout>
+    </v-container>
+
+    <v-container fluid class="">
+      <v-layout wrap align-center justify-center row fill-height>
+        <v-flex xs12 md10 class="">
+          <aboutHackersMeetup />
         </v-flex>
       </v-layout>
     </v-container>
@@ -21,7 +39,7 @@
     <v-container fluid class="grey lighten-5 pt-5 pb-1">
       <v-layout wrap align-center justify-center row fill-height>
         <v-flex xs12 md10 class="">
-          <contactInfo/>
+          <contactInfo />
         </v-flex>
       </v-layout>
     </v-container>
@@ -29,7 +47,7 @@
     <v-container fluid class="grey lighten-5 py-2 pt-0">
       <v-layout wrap align-center justify-center row fill-height>
         <v-flex xs12 md10 class="">
-          <coc/>
+          <coc />
         </v-flex>
       </v-layout>
     </v-container>
@@ -37,32 +55,34 @@
     <v-container fluid class="grey lighten-5 py-2">
       <v-layout wrap align-center justify-center row fill-height>
         <v-flex xs12 md10 class="">
-          <AntiHarassmentPolicy/>
+          <AntiHarassmentPolicy />
         </v-flex>
       </v-layout>
     </v-container>
-
   </v-content>
-  
 </template>
 
 <script>
-import ChapterDetails from '@/assets/data/chapterDetails.json'
-import aboutGDGChapter from '@/components/about/aboutGDGChapter'
-import contactInfo from '@/components/about/contactInfo'
-import coc from '@/components/about/coc'
-import AntiHarassmentPolicy from '@/components/about/AntiHarassmentPolicy'
-  export default {
-    components: {
-      aboutGDGChapter,
-      contactInfo,
-      coc,
-      AntiHarassmentPolicy
-    },
-    data() {
-      return {
-        ChapterDetails: ChapterDetails
-      }
-    },
-  }
+import ChapterDetails from "@/assets/data/chapterDetails.json";
+import aboutGDGChapter from "@/components/about/aboutGDGChapter";
+import contactInfo from "@/components/about/contactInfo";
+import coc from "@/components/about/coc";
+import AntiHarassmentPolicy from "@/components/about/AntiHarassmentPolicy";
+import About from "@/assets/data/about.json";
+import aboutHackersMeetup from "@/components/about/HackersMeetup"
+export default {
+  components: {
+    aboutGDGChapter,
+    contactInfo,
+    coc,
+    AntiHarassmentPolicy,
+    aboutHackersMeetup
+  },
+  data() {
+    return {
+      ChapterDetails: ChapterDetails,
+      About: About,
+    };
+  },
+};
 </script>
